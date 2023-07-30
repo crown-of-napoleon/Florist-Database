@@ -26,6 +26,7 @@ CREATE TABLE SalesRecord (
     PRIMARY KEY (id),
     FOREIGN KEY (productId) REFERENCES Product(id)
     FOREIGN KEY (employeeId) REFERENCES Employee(id)
+    FOREIGN KEY (customerId) REFERENCES Customer(id)
 );
 
 -- Create a table that records employee information.
@@ -37,3 +38,10 @@ CREATE TABLE Employee (
     PRIMARY KEY (id)
 );
 
+-- Create a table that records customer information.
+CREATE TABLE Customer (
+    id INT NOT NULL AUTO_INCREMENT,
+    firstName VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
