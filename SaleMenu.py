@@ -44,7 +44,7 @@ while True:
     connection = db.connect('SalesRecord.db')
     cursor = connection.cursor()
 
-    # Add customer
+    # Add sale
     if input == 1:
         product_id = input("Enter the product id of the sale: ")
         quantity = input("Enter the quantity of the sale: ")
@@ -61,18 +61,23 @@ while True:
         cursor.execute("INSERT INTO SalesRecord (product_id, quantity, created_date) VALUES (?, ?, ?)", (product_id, quantity, created_date))
         
 
-        
-
-    # Search for a customer
+    # Search for a sale
     elif input == 2:
-        name = input("Enter the name of the customer: ")
-        cursor.execute("SELECT * FROM customers WHERE name = (?)", (input,))
+        id = input("Enter the id of the sale: ")
+
+        # Input validation: ensure that the input is an integer
+        try:
+            id = int(id)
+        except:
+            print("Invalid input.")
+            
+        cursor.execute("SELECT * FROM SalesRecord WHERE name = (?)", (input,))
         if cursor.fetchone() is not None:
             print("Customer found.")
         else:
             print("The customer you are looking for does not exist.") 
 
-    # Delete a customer
+    # Delete a sale
     elif input == 3:
         name = input("Enter the name of the customer: ")
         cursor.execute("DELETE FROM customers WHERE name = (?)", (input,))
