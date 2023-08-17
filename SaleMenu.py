@@ -31,13 +31,13 @@ while True:
 
     # Input validation: check whether the input is an integer
     try :
-        input = int(choice)
+        choice = int(choice)
     except :
         print("Invalid input. Please enter a number between 1 and 5.")
         sys.exit()
 
     # Input validation: check whether the input is between 1 and 5    
-    while input < 1 or input > 5 :
+    while choice < 1 or choice > 5 :
         print("The input is out of range. Please enter a number between 1 and 5.")
 
 

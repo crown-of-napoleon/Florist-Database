@@ -16,17 +16,17 @@ while True:
     print("5. Exit")
 
     # Get the input from the user
-    input = input("Enter the number of the operation you want to perform: ")
+    choice = input("Enter the number of the operation you want to perform: ")
 
     # Input validation: check whether the input is an integer
     try :
-        input = int(input)
+        choice = int(choice)
     except :
         print("Invalid input. Please enter a number between 1 and 5.")
         sys.exit()
 
     # Input validation: check whether the input is between 1 and 5    
-    while input < 1 or input > 5 :
+    while choice < 1 or choice > 5 :
         print("The input is out of range. Please enter a number between 1 and 5.")
 
 
@@ -34,12 +34,12 @@ while True:
     cursor = connection.cursor()
 
     # Add customer
-    if input == 1:
+    if choice == 1:
         name = input("Enter the name of the customer: ")
         cursor.execute("INSERT INTO customers (name) VALUES (?)", (input,))
 
     # Search for a customer
-    elif input == 2:
+    elif choice == 2:
         name = input("Enter the name of the customer: ")
         cursor.execute("SELECT * FROM customers WHERE name = (?)", (input,))
         if cursor.fetchone() is not None:
@@ -48,7 +48,7 @@ while True:
             print("The customer you are looking for does not exist.") 
 
     # Delete a customer
-    elif input == 3:
+    elif choice == 3:
         name = input("Enter the name of the customer: ")
         cursor.execute("DELETE FROM customers WHERE name = (?)", (input,))
         if cursor.fetchone() is not None:
@@ -57,7 +57,7 @@ while True:
             print("The customer you are looking for does not exist.")
 
     # Update a customer
-    elif input == 4:
+    elif choice == 4:
         id = input("Enter the id of the customer: ")
 
         # Input validation: ensure that the input is an integer
@@ -84,7 +84,7 @@ while True:
         cursor.execute("UPDATE customers SET first_name = (?), last_name = (?) WHERE id = (?)", (first_name, last_name, id))
         print("Customer updated.")
 
-    elif input == 5:
+    elif choice == 5:
         sys.exit()
     
 connection.commit()
