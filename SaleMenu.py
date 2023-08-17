@@ -27,11 +27,11 @@ while True:
 # );
 
     # Get the input from the user
-    input = input("Enter the number of the operation you want to perform: ")
+    choice = input("Enter the number of the operation you want to perform: ")
 
     # Input validation: check whether the input is an integer
     try :
-        input = int(input)
+        input = int(choice)
     except :
         print("Invalid input. Please enter a number between 1 and 5.")
         sys.exit()
@@ -45,7 +45,7 @@ while True:
     cursor = connection.cursor()
 
     # Add sale
-    if input == 1:
+    if choice == 1:
         product_id = input("Enter the product id of the sale: ")
         quantity = input("Enter the quantity of the sale: ")
         created_date = input("Enter the created date of the sale: ")
@@ -57,12 +57,12 @@ while True:
         except:
             print("Invalid input. Please enter an integer.")
             sys.exit()
-        
+    
         cursor.execute("INSERT INTO SalesRecord (product_id, quantity, created_date) VALUES (?, ?, ?)", (product_id, quantity, created_date))
         
 
     # Search for a sale
-    elif input == 2:
+    elif choice == 2:
         id = input("Enter the id of the sale: ")
 
         # Input validation: ensure that the input is an integer
@@ -78,7 +78,7 @@ while True:
             print("The customer you are looking for does not exist.") 
 
     # Delete a sale
-    elif input == 3:
+    elif choice == 3:
         name = input("Enter the name of the customer: ")
         cursor.execute("DELETE FROM customers WHERE name = (?)", (input,))
         if cursor.fetchone() is not None:
@@ -87,7 +87,7 @@ while True:
             print("The customer you are looking for does not exist.")
 
     # Update a customer
-    elif input == 4:
+    elif choice == 4:
         id = input("Enter the id of the customer: ")
 
         # Input validation: ensure that the input is an integer
