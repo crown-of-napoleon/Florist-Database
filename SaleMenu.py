@@ -26,6 +26,15 @@ while True:
 #     FOREIGN KEY (customerId) REFERENCES Customer(id)
 # );
 
+# CREATE TABLE InventoryLog (
+#     id INT NOT NULL AUTO_INCREMENT,
+#     productId INT NOT NULL,
+#     quantity INT NOT NULL,
+#     createdDate DATETIME NOT NULL,
+#     PRIMARY KEY (id),
+#     FOREIGN KEY (productId) REFERENCES Product(id)
+# );
+
     # Get the input from the user
     choice = input("Enter the number of the operation you want to perform: ")
 
@@ -59,6 +68,9 @@ while True:
             sys.exit()
     
         cursor.execute("INSERT INTO SalesRecord (product_id, quantity, created_date) VALUES (?, ?, ?)", (product_id, quantity, created_date))
+        cursor.execute("DELETE FROM InventoryLog WHERE product_id = (?) LIMIT 1", (product_id,))
+
+        print('Reminder: The inventory log of this corresponding product has been automatically updated.')
         
 
     # Search for a sale
@@ -85,6 +97,8 @@ while True:
             print("Customer deleted.")
         else:
             print("The customer you are looking for does not exist.")
+        print('You will need to manually update the inventory log,', end = '') 
+        print('as the product has been automatically deleted when you added the sales record.')
 
     # Update a customer
     elif choice == 4:
