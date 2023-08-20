@@ -61,21 +61,36 @@ while True:
 
         # Search by first name
         first_name = input("Enter the first name of the customer: ")
-        # TBD
+        cursor.execute('SELECT * FROM Employee WHERE first_name = (?)', (first_name,))
+        if cursor.fetchone() is not None:
+            print("Emplyoee found.")
+        else:
+            print("The employee you are looking for does not exist.") 
 
-    # Delete a customer
+        # Search by role
+        role = input("Enter the role of the customer: ")
+        cursor.execute('SELECT * FROM Employee WHERE role = (?)', (role,))
+        if cursor.fetchone() is not None:
+            print("Emplyoee found.")
+        else:
+            print("The employee you are looking for does not exist.")
+        
+
+    # Delete an employee
     elif choice == 3:
-        name = input("Enter the name of the customer: ")
-        cursor.execute("DELETE FROM customers WHERE name = (?)", (input,))
+        print('Don\'t know the id? Search for the employee first.')
+        id = input("Enter the name of the employee: ")
+        cursor.execute("DELETE FROM Employee WHERE id = (?)", (id,))
         if cursor.fetchone() is not None:
             print("Customer deleted.")
         else:
             print("The customer you are looking for does not exist.")
 
-    # Update a customer
+    # Update an employee
     elif choice == 4:
-        id = input("Enter the id of the customer: ")
-
+        print('Don\'t know the id? Search for the employee first.')
+        id = input("Enter the id of the employee: ")
+    
         # Input validation: ensure that the input is an integer
         try:
             id = int(id)
@@ -94,10 +109,10 @@ while True:
             print("The id you are looking for does not exist.")
             sys.exit()
 
-        # Update the first name and last name of the customer
-        first_name = input("Enter the first name of the customer: ")
-        last_name = input("Enter the last name of the customer: ")
-        cursor.execute("UPDATE customers SET first_name = (?), last_name = (?) WHERE id = (?)", (first_name, last_name, id))
+        # Update the first name and last name of the employee
+        first_name = input("Enter the first name of the employee: ")
+        last_name = input("Enter the last name of the employee: ")
+        cursor.execute("UPDATE Employee SET first_name = (?), last_name = (?) WHERE id = (?)", (first_name, last_name, id))
         print("Customer updated.")
 
     elif choice == 5:
