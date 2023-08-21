@@ -51,26 +51,49 @@ while True:
     # Search for a employee
     elif choice == 2:
 
-        # Search by last name
-        last_name = input("Enter the last name of the customer: ")
-        cursor.execute("SELECT * FROM Employee WHERE last_name = (?)", (last_name,))
-        if cursor.fetchone() is not None:
-            print("Emplyoee found.")
-        else:
-            print("The employee you are looking for does not exist.") 
+        print('Do you want to search by first name or last name?')
+        print('1. first name')
+        print('2. last name')
+        print('3. role')
+        sub_choice = input('Enter the choice (1/2/3): ')
 
+        #Input validation: check whether the input is an integer
+        try:
+            sub_choice = int(sub_choice)
+        except:
+            print("Invalid input. Please enter an integer.")
+            sys.exit()
+        
+        # Input validation: check whether the input is between 1 and 2
+        if sub_choice < 1 or sub_choice > 2:
+            print("The input is out of range. Please enter a number between 1 and 2.")
+            sys.exit()
+    
+        # Search by last name
+        if sub_choice == 1:
+            last_name = input("Enter the last name of the customer: ")
+            cursor.execute("SELECT * FROM Employee WHERE last_name = (?)", (last_name,))
+            if cursor.fetchone() is not None:
+                print('---------------------------------')
+                print("Emplyoee found.")
+            else:
+                print("The employee you are looking for does not exist.") 
+
+        else: 
         # Search by first name
-        first_name = input("Enter the first name of the customer: ")
-        cursor.execute('SELECT * FROM Employee WHERE first_name = (?)', (first_name,))
-        if cursor.fetchone() is not None:
-            print("Emplyoee found.")
-        else:
-            print("The employee you are looking for does not exist.") 
+            first_name = input("Enter the first name of the customer: ")
+            cursor.execute('SELECT * FROM Employee WHERE first_name = (?)', (first_name,))
+            if cursor.fetchone() is not None:
+                print('---------------------------------')
+                print("Emplyoee found.")
+            else:
+                print("The employee you are looking for does not exist.") 
 
         # Search by role
         role = input("Enter the role of the customer: ")
         cursor.execute('SELECT * FROM Employee WHERE role = (?)', (role,))
         if cursor.fetchone() is not None:
+            print('---------------------------------')
             print("Emplyoee found.")
         else:
             print("The employee you are looking for does not exist.")
