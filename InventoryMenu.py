@@ -1,5 +1,5 @@
 # Author: Haolin Guo
-# Date: July 30, 2023
+# Date: August 22, 2023
 # Description: This program is a menu for the customer database.
 
 
@@ -132,18 +132,18 @@ while True:
 
     # Delete an inventory
     elif choice == 3:
-        name = input("Enter the name of the customer: ")
-        cursor.execute("DELETE FROM customers WHERE name = (?)", (input,))
+        print('Don\'t know the id? Try searching for it.')
+        id = input("Enter the id of the inventory: ")
+        cursor.execute("DELETE FROM InventoryLog WHERE id = (?)", (id,))
         if cursor.fetchone() is not None:
-            print("Customer deleted.")
+            print("Inventory deleted.")
         else:
-            print("The customer you are looking for does not exist.")
-        print('You will need to manually update the inventory log,', end = '') 
-        print('as the product has been automatically deleted when you added the sales record.')
+            print("The inventory you are looking for does not exist.")
+      
 
-    # Update a customer
+    # Update an inventory
     elif choice == 4:
-        id = input("Enter the id of the customer: ")
+        id = input("Enter the id of the inventory: ")
 
         # Input validation: ensure that the input is an integer
         try:
@@ -158,16 +158,21 @@ while True:
             sys.exit()
         
         # Input validation: ensure that the input is a valid id
-        cursor.execute("SELECT COUNT(*) FROM customers WHERE id = (?)", (id,))
+        cursor.execute("SELECT COUNT(*) FROM InventoryLog WHERE id = (?)", (id,))
         if cursor.fetchone()[0] == 0:
             print("The id you are looking for does not exist.")
             sys.exit()
 
         # Update the first name and last name of the customer
-        first_name = input("Enter the first name of the customer: ")
-        last_name = input("Enter the last name of the customer: ")
-        cursor.execute("UPDATE customers SET first_name = (?), last_name = (?) WHERE id = (?)", (first_name, last_name, id))
-        print("Customer updated.")
+        quantity = input("Enter the quantity of the inventory: ")
+        created_date = input("Enter the date of the inventory: ")
+
+        # Input validation: created_date must be in yyyy-mm-dd format
+        while re.match(r'^\d{4}-\d{2}-\d{2}$', created_date) is None:
+            print('Invalid input. Please enter a date in yyyy-mm-dd format.')
+
+        cursor.execute("UPDATE InventoryLog SET quantity = (?), createdDate = (?) WHERE id = (?)", (quantity, created_date, id))
+        print("Inventory updated.")
 
     elif input == 5:
         sys.exit()
