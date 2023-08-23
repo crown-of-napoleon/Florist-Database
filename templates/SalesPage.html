@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Management - Anatta Flowers Shop Database</title>
+    <style>
+        /* Basic styling for better visualization */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sales Management</h1>
+
+    <!-- Display any flash messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Form to Record a New Sale -->
+    <h2>Record New Sale</h2>
+    <form action="/add_sale" method="post">
+        <label for="product_id">Product ID:</label>
+        <input type="number" id="product_id" name="product_id" required>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <label for="created_date">Sale Date:</label>
+        <input type="date" id="created_date" name="created_date" required>
+        <input type="submit" value="Record Sale">
+    </form>
+
+    <!-- Display Existing Sales Records -->
+    <h2>Existing Sales Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Sale Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales_records %}
+            <tr>
+                <td>{{ sale.id }}</td>
+                <td>{{ sale.productId }}</td>
+                <td>{{ sale.quantity }}</td>
+                <td>{{ sale.createdDate }}</td>
+                <td>
+                    <a href="/edit_sale/{{ sale.id }}">Edit</a> | 
+                    <a href="/delete_sale/{{ sale.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Navigation Links to Other Pages -->
+    <p>
+        <a href="{{ url_for('index') }}">Back to Main Menu</a>
+    </p>
+</body>
+</html>
