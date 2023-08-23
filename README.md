@@ -1,34 +1,64 @@
-# Florist Database
+# Anatta Flowers Shop Database System
 
-## Project Overview
+A comprehensive database management system designed to streamline operations for Anatta Flowers Shop in Oakville, Canada.
 
-This project was developed to modernize and streamline the operations of Anatta Flowers Shop, a local florist in Oakville, Canada. The primary goal was to enhance the customer experience, improve inventory management, and automate supply replenishment processes.
+## Table of Contents
 
-## Development Timeline
-**November 2021 - February 2022**
+- [Introduction](#introduction)
+- [Installation and Setup](#installation-and-setup)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Contribution](#contribution)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-## Key Features & Achievements
+## Introduction
 
-- **Relational Database Design**: Independently designed and deployed a MySQL relational database. This database was pivotal in streamlining sales, inventory, and automatic supply replenishment processes.
+This project was initiated to modernize and enhance the operations of Anatta Flowers Shop. With a focus on improving customer experience, inventory management, and automating supply replenishment, this system has significantly boosted the shop's operational efficiency.
 
-- **Web Interface**: Developed a user-friendly website interface using Python and Flask. This interface allows for efficient database management and offers a seamless experience to the end-users.
+## Installation and Setup
 
-- **Dynamic Content Updates**: Enhanced the website's performance by enabling dynamic content updates. This was achieved through AJAX calls to the Flask backend, resulting in a 50% increase in speed and responsiveness.
+1. Clone the repository:
 
-- **User Authentication**: Integrated a secure user authentication system using Flask’s session object, ensuring data security and personalized user experiences.
+```
+git clone https://github.com/crown-of-napoleon/Florist-Database.git
+```
 
-- **Operational Efficiency**: Successfully managed over 2,000 orders and orchestrated more than 30 inventory replenishments during the development phase.
+2. Navigate to the project directory and install the required dependencies:
+```
+pip install -r requirements.txt
+```
 
-## Recognition
+3. Run the Flask application:
+```
+flask run
+```
 
-This project was recognized with distinction by the Computer Science Department at Oakville Trafalgar High School for its innovative approach and significant impact on local business operations.
+## Features
 
-## Developer's Note
+- **Relational Database**: Built on MySQL, ensuring structured and efficient data storage.
+- **Web Interface**: User-friendly interface developed with Python and Flask.
+- **Dynamic Content**: AJAX calls integrated for real-time content updates, enhancing responsiveness.
+- **User Authentication**: Secure login system using Flask’s session object.
+- **Inventory Management**: Automated processes for tracking and replenishing stock.
 
-I'm proud to have contributed to the growth and efficiency of a local business. This project not only honed my technical skills but also provided invaluable insights into the challenges and rewards of integrating technology with traditional business operations. I'm grateful for the opportunity and the recognition received.
+## Project Structure
 
----
+- `app.py`: Main application file containing Flask routes and logic.
+- `static/`: Directory for static files like CSS, JS, and images.
+- `templates/`: Directory for HTML templates.
+- `README.md`: Documentation for the project.
 
-For any queries or feedback related to this project, please reach out to [g.haolin@columbia.edu].
+## Contribution
 
-Thank you for visiting!
+Contributions are welcome! Please read the contribution guidelines before submitting pull requests.
+
+## License
+This project is licensed under the MIT License. 
+
+## Acknowledgements
+
+- Anatta Flowers Shop for their collaboration and feedback.
+- Oakville Trafalgar High School's Computer Science Department for their recognition and support.
+- All contributors and testers who helped in refining this system.
+
