@@ -53,6 +53,9 @@ flask run
 
 Contributions are welcome! Please read the contribution guidelines before submitting pull requests.
 
+[Contribution guidelines for this project](CONTRIBUTING.md)
+
+
 ## License
 This project is licensed under the MIT License. 
 
