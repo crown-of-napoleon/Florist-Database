@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Management - Anatta Flowers Shop Database</title>
+    <link rel="stylesheet" href="/path_to_your_react_app_bundle.css"> <!-- Add path to your React app's bundled CSS -->
     <style>
         /* Basic styling for better visualization */
         body {
@@ -27,61 +28,14 @@
     </style>
 </head>
 <body>
-    <h1>Customer Management</h1>
+    <div id="react-root"></div> <!-- React will render components inside this div -->
 
-    <!-- Display any flash messages -->
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-
-    <!-- Form to Add a New Customer -->
-    <h2>Add New Customer</h2>
-    <form action="/add_customer" method="post">
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" required>
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required>
-        <input type="submit" value="Add Customer">
-    </form>
-
-    <!-- Form to Search for a Customer -->
-    <h2>Search Customer</h2>
-    <form action="/search_customer" method="post">
-        <label for="search_first_name">First Name:</label>
-        <input type="text" id="search_first_name" name="search_first_name" required>
-        <label for="search_last_name">Last Name:</label>
-        <input type="text" id="search_last_name" name="search_last_name" required>
-        <input type="submit" value="Search">
-    </form>
-
-    <!-- Display Searched Customer and Options to Update/Delete -->
-    {% if customer %}
-        <h2>Found Customer</h2>
-        <p>First Name: {{ customer.firstName }}</p>
-        <p>Last Name: {{ customer.lastName }}</p>
-        <form action="/delete_customer" method="post">
-            <input type="hidden" name="customer_id" value="{{ customer.id }}">
-            <input type="submit" value="Delete Customer">
-        </form>
-        <form action="/update_customer" method="post">
-            <input type="hidden" name="update_customer_id" value="{{ customer.id }}">
-            <label for="update_first_name">Update First Name:</label>
-            <input type="text" id="update_first_name" name="update_first_name" value="{{ customer.firstName }}" required>
-            <label for="update_last_name">Update Last Name:</label>
-            <input type="text" id="update_last_name" name="update_last_name" value="{{ customer.lastName }}" required>
-            <input type="submit" value="Update Customer">
-        </form>
-    {% endif %}
-
-    <!-- Navigation Links to Other Pages -->
-    <p>
-        <a href="{{ url_for('index') }}">Back to Main Menu</a>
-    </p>
+    <!-- Include React and your bundled JS at the end of the body -->
+    <script src="/path_to_your_react_bundle.js"></script> <!-- Add path to your React app's bundled JS -->
+    <script>
+        // You can initialize your React app here, passing any server-side data you need
+        // For example, if you have a React component named CustomerManagement:
+        ReactDOM.render(<CustomerManagement initialData={{ customer }} />, document.getElementById('react-root'));
+    </script>
 </body>
 </html>
