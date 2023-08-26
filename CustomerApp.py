@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_restful import Api, Resource
+from flask_restful import Api, Resource, reqparse
 import sqlite3 as db
 
+# Set up the Flask app and the API
 app = Flask(__name__)
 api = Api(app)
 app.secret_key = "florist_secret_key"
@@ -19,98 +20,52 @@ def query_db(query, args=(), one=False):
 
 @app.route('/')
 def index():
+    """
+    This function is used to render the index.html template.
+    """
     return render_template('index.html')
 
-@app.route('/add_customer', methods=['POST'])
-def add_customer():
-    first_name = request.form['first_name']
-    last_name = request.form['last_name']
-    connection = db.connect('customer.db')
-    cursor = connection.cursor()
-    cursor.execute("INSERT INTO Customer (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
-    connection.commit()
-    connection.close()
-    flash("Customer added successfully!")
-    return redirect(url_for('index'))
-
-@app.route('/search_customer', methods=['POST'])
-def search_customer():
-    first_name = request.form['search_first_name']
-    last_name = request.form['search_last_name']
-    connection = db.connect('customer.db')
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM Customer WHERE firstName=? AND lastName=?", (first_name, last_name))
-    customer = cursor.fetchone()
-    connection.close()
-    if customer:
-        return render_template('index.html', customer=customer)
-    else:
-        flash("Customer not found!")
-        return redirect(url_for('index'))
-
-@app.route('/delete_customer', methods=['POST'])
-def delete_customer():
-    customer_id = request.form['customer_id']
-    connection = db.connect('customer.db')
-    cursor = connection.cursor()
-    cursor.execute("DELETE FROM Customer WHERE id=?", (customer_id,))
-    connection.commit()
-    connection.close()
-    flash("Customer deleted successfully!")
-    return redirect(url_for('index'))
-
-@app.route('/update_customer', methods=['POST'])
-def update_customer():
-    customer_id = request.form['update_customer_id']
-    new_first_name = request.form['update_first_name']
-    new_last_name = request.form['update_last_name']
-    connection = db.connect('customer.db')
-    cursor = connection.cursor()
-    cursor.execute("UPDATE Customer SET firstName=?, lastName=? WHERE id=?", (new_first_name, new_last_name, customer_id))
-    connection.commit()
-    connection.close()
-    flash("Customer updated successfully!")
-    return redirect(url_for('index'))
-
 class CustomerResource(Resource):
+    
+    parser = reqparse.RequestParser()
+    parser.add_argument('first_name', type=str, required=True, help="First name cannot be blank!")
+    parser.add_argument('last_name', type=str, required=True, help="Last name cannot be blank!")
+
     def get(self, customer_id=None):
-        connection = db.connect('customer.db')
-        cursor = connection.cursor()
+        """
+        This function is used to get a customer from the database.
+        """
         if customer_id:
-            cursor.execute("SELECT * FROM Customer WHERE id=?", (customer_id,))
-            customer = cursor.fetchone()
-            connection.close()
+            customer = query_db("SELECT * FROM Customer WHERE id=?", (customer_id,), one=True)
             if customer:
                 return {"customer": customer}
             else:
                 return {"message": "Customer not found"}, 404
         else:
-            cursor.execute("SELECT * FROM Customer")
-            customers = cursor.fetchall()
-            connection.close()
+            customers = query_db("SELECT * FROM Customer")
             return {"customers": customers}
 
     def post(self):
-        # This is similar to your add_customer function
-        # Extract details from request and add to the database
-        pass
+        args = self.parser.parse_args()
+        first_name = args['first_name']
+        last_name = args['last_name']
+        
+        query_db("INSERT INTO Customer (firstName, lastName) VALUES (?, ?)", (first_name, last_name))
+        return {"message": "Customer added successfully!"}, 201
 
     def put(self, customer_id):
-        # This is similar to your update_customer function
-        # Extract details from request and update the database record
-        pass
+        args = self.parser.parse_args()
+        new_first_name = args['first_name']
+        new_last_name = args['last_name']
+        
+        query_db("UPDATE Customer SET firstName=?, lastName=? WHERE id=?", (new_first_name, new_last_name, customer_id))
+        return {"message": "Customer updated successfully!"}
 
     def delete(self, customer_id):
-        # This is similar to your delete_customer function
-        # Delete the customer from the database
-        pass
+        query_db("DELETE FROM Customer WHERE id=?", (customer_id,))
+        return {"message": "Customer deleted successfully!"}
 
 api.add_resource(CustomerResource, '/api/customer', '/api/customer/<int:customer_id>')
 
-
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
