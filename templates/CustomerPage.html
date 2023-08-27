@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Management - Anatta Flowers Shop Database</title>
-    <link rel="stylesheet" href="/path_to_your_react_app_bundle.css"> <!-- Add path to your React app's bundled CSS -->
+    <link rel="stylesheet" href="/static/css/main.css"> <!-- Adjust path to your React app's bundled CSS -->
     <style>
         /* Basic styling for better visualization */
         body {
@@ -31,11 +31,12 @@
     <div id="react-root"></div> <!-- React will render components inside this div -->
 
     <!-- Include React and your bundled JS at the end of the body -->
-    <script src="/path_to_your_react_bundle.js"></script> <!-- Add path to your React app's bundled JS -->
+    <script src="/static/js/CustomerManagement.js"></script> <!-- Adjust path to your React app's bundled JS -->
     <script>
-        // You can initialize your React app here, passing any server-side data you need
-        // For example, if you have a React component named CustomerManagement:
-        ReactDOM.render(<CustomerManagement initialData={{ customer }} />, document.getElementById('react-root'));
+        // Assuming you have React and ReactDOM libraries included in your bundle
+        // You can initialize your React app here
+        const { CustomerManagement } = window; // If your component is attached to the window object in your bundle
+        ReactDOM.render(<CustomerManagement />, document.getElementById('react-root'));
     </script>
 </body>
 </html>
