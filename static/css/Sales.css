@@ -29,4 +29,20 @@
     background-color: #138496; /* Darken the button color on hover */
 }
 
-/* Styles for any tables or
+/* Styles for any tables or lists displaying sales data */
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.sales-table th, .sales-table td {
+    padding: 10px;
+    border: 1px solid #c0c0c0; /* Light gray border */
+}
+
+.sales-table th {
+    background-color: #e6f7ff; /* Lighter blue for header background */
+}
+
+/* Any other specific styles or overrides for elements within the SalesManagement component */
