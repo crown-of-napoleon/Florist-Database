@@ -9,9 +9,9 @@ from SalesApp import run as sales_run
 def no_prints(monkeypatch):
     monkeypatch.setattr("builtins.print", lambda x: None)
 
-def test_app_run():
-    # Test the main app's run function
-    assert app_run() is None  # Assuming the run function returns None
+def test_customer_run():
+    # Test the customer app's run function
+    assert customer_run() is None
 
 def test_employee_run():
     # Test the employee app's run function

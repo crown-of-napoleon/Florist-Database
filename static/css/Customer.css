@@ -1,0 +1,31 @@
+/* CustomerManagement.css */
+
+/* General styles for the Customer Management component */
+.customer-management-container {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light gray background for the container */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Custom styles for headers or titles */
+.customer-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Custom styles for any specific buttons or controls */
+.custom-button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: #ffffff; /* White text */
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-button:hover {
+    background-color: #0056b3; /* Darken the button color on hover */
+}
+
+/* Any other specific styles or overrides for elements within the CustomerManagement component */

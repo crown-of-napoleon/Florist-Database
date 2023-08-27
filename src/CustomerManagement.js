@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import 'static/css/CustomerManagement.css'
 
 function CustomerManagement({ initialData }) {
     const [firstName, setFirstName] = useState('');

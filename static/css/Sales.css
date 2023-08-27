@@ -1,0 +1,32 @@
+/* SalesManagement.css */
+
+/* General styles for the Sales Management component */
+.sales-management-container {
+    padding: 20px;
+    background-color: #f0f8ff; /* Light blue background for the container */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Custom styles for headers or titles */
+.sales-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #464646; /* Dark gray text color */
+}
+
+/* Custom styles for any specific buttons or controls */
+.sales-button {
+    background-color: #17a2b8; /* Bootstrap info color */
+    color: #ffffff; /* White text */
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sales-button:hover {
+    background-color: #138496; /* Darken the button color on hover */
+}
+
+/* Styles for any tables or
