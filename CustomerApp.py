@@ -46,6 +46,9 @@ class CustomerResource(Resource):
             return {"customers": customers}
 
     def post(self):
+        """
+        This function is used to add customer information.
+        """
         args = self.parser.parse_args()
         first_name = args['first_name']
         last_name = args['last_name']
@@ -54,6 +57,9 @@ class CustomerResource(Resource):
         return {"message": "Customer added successfully!"}, 201
 
     def put(self, customer_id):
+        """
+        This function is used to update customer information
+        """
         args = self.parser.parse_args()
         new_first_name = args['first_name']
         new_last_name = args['last_name']
@@ -62,6 +68,9 @@ class CustomerResource(Resource):
         return {"message": "Customer updated successfully!"}
 
     def delete(self, customer_id):
+        """
+        This function is used to delete customer information
+        """
         query_db("DELETE FROM Customer WHERE id=?", (customer_id,))
         return {"message": "Customer deleted successfully!"}
 

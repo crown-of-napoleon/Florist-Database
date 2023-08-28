@@ -1,10 +1,11 @@
+# Import Flask.
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import sqlite3 as db
 
 app = Flask(__name__)
 app.secret_key = "florist_secret_key"
 
-DATABASE = 'SalesRecord.db'
+DATABASE = 'InventoryLog.db'
 
 def query_db(query, args=(), one=False):
     with db.connect(DATABASE) as connection:

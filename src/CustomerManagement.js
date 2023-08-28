@@ -1,12 +1,14 @@
+// Import React
 import React, { useState } from 'react';
 import axios from 'axios';
-import 'static/css/CustomerManagement.css'
+import 'static/css/CustomerManagement.css' // Connect with css
 
 function CustomerManagement({ initialData }) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [customer, setCustomer] = useState(initialData);
 
+    // Add customer and error catching
     const addCustomer = async () => {
         try {
             await axios.post('/api/customer', { first_name: firstName, last_name: lastName });
@@ -18,6 +20,7 @@ function CustomerManagement({ initialData }) {
         }
     };
 
+    // Search customer and error catching
     const searchCustomer = async () => {
         try {
             const response = await axios.get(`/api/customer?first_name=${firstName}&last_name=${lastName}`);

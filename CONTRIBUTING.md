@@ -23,7 +23,7 @@ By participating in this project, you are expected to uphold our Code of Conduct
 2. **Clone the Repository**: Now, clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the 'Code' button, and then click the clipboard icon to copy the URL. Open your terminal and execute the following git command:
 
 ```
-git clone [URL]
+git clone [github.com/crown-of-napoleon/Florist-Database]
 ```
 
 3. **Navigate to the Repository**: Use the following command to navigate to the cloned repository:
@@ -88,4 +88,6 @@ python test_florist_database.py
 
 By contributing to this project, you agree that your contributions will be licensed under the same license as the main project. See [LICENSE](LICENSE) for more details.
 
+## Contact
 
+Please contact Haolin Guo (email: [g.haolin@columbia.edu]) for any questions, comments, or concerns. 

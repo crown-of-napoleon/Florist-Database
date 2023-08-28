@@ -6,7 +6,7 @@ app = Flask(__name__)
 api = Api(app)
 app.secret_key = "florist_secret_key"
 
-DATABASE = 'your_database_name.db'  # Replace with the name of your SQLite database
+DATABASE = 'Employee.db'  # Replace with the name of your SQLite database
 
 def query_db(query, args=(), one=False):
     with db.connect(DATABASE) as con:
@@ -28,6 +28,9 @@ class EmployeeResource(Resource):
     parser.add_argument('position', type=str, required=True, help="Position cannot be blank!")
 
     def get(self, employee_id=None):
+        """
+        This function is used to retreive employee information.
+        """
         if employee_id:
             employee = query_db("SELECT * FROM Employee WHERE id=?", (employee_id,), one=True)
             if employee:
@@ -39,6 +42,9 @@ class EmployeeResource(Resource):
             return {"employees": employees}
 
     def post(self):
+        """
+        This function is used to add employee information
+        """
         args = self.parser.parse_args()
         first_name = args['first_name']
         last_name = args['last_name']
@@ -48,6 +54,9 @@ class EmployeeResource(Resource):
         return {"message": "Employee added successfully!"}, 201
 
     def put(self, employee_id):
+        """
+        This function is used to update employee information.
+        """
         args = self.parser.parse_args()
         new_first_name = args['first_name']
         new_last_name = args['last_name']
@@ -57,6 +66,9 @@ class EmployeeResource(Resource):
         return {"message": "Employee updated successfully!"}
 
     def delete(self, employee_id):
+        """
+        This function is used to delete employee information.
+        """
         query_db("DELETE FROM Employee WHERE id=?", (employee_id,))
         return {"message": "Employee deleted successfully!"}
 

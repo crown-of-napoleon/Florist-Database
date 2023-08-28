@@ -21,6 +21,9 @@ def sales():
 
 @app.route('/add_sale', methods=['POST'])
 def add_sale():
+    """
+    This function is used to add sales.
+    """
     product_id = request.form['product_id']
     quantity = request.form['quantity']
     created_date = request.form['created_date']
@@ -31,6 +34,9 @@ def add_sale():
 
 @app.route('/update_sale', methods=['POST'])
 def update_sale():
+    """
+    This function is used to update sales.
+    """
     sale_id = request.form['sale_id']
     new_product_id = request.form['new_product_id']
     new_quantity = request.form['new_quantity']
@@ -42,6 +48,9 @@ def update_sale():
 
 @app.route('/delete_sale', methods=['POST'])
 def delete_sale():
+    """
+    This function is used to delete sales.
+    """
     sale_id = request.form['sale_id']
     
     query_db("DELETE FROM SalesRecord WHERE id=?", (sale_id,))
