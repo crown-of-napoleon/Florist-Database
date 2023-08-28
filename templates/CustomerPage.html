@@ -4,39 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Management - Anatta Flowers Shop Database</title>
-    <link rel="stylesheet" href="/static/css/Customer.css"> 
-    <style>
-        /* Basic styling for better visualization */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to your custom CSS -->
+    <link rel="stylesheet" href="/static/css/customerStyles.css">
 </head>
 <body>
-    <div id="react-root"></div> <!-- React will render components inside this div -->
+    <div class="container mt-5">
+        <h1 class="mb-4">Customer Management</h1>
+        <div id="react-root"></div> <!-- React will render components inside this div -->
+    </div>
 
     <!-- Include React and your bundled JS at the end of the body -->
-    <script src="/static/js/CustomerManagement.js"></script> <!-- Adjust path to your React app's bundled JS -->
+    <script src="/static/js/CustomerManagement.js"></script>
     <script>
         // Assuming you have React and ReactDOM libraries included in your bundle
         // You can initialize your React app here
         const { CustomerManagement } = window; // If your component is attached to the window object in your bundle
         ReactDOM.render(<CustomerManagement />, document.getElementById('react-root'));
     </script>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
