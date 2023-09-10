@@ -62,7 +62,8 @@ Contributions are welcome! Please read the contribution guidelines before submit
 
 
 ## License
-This project is licensed under the MIT License. 
+This project is licensed under the MIT License. The full details of the license can be seen [here](LICENSE).
+
 
 ## Commercial Use
 
