@@ -51,10 +51,24 @@ flask run
 
 ## Project Structure
 
-- `app.py`: Main application file containing Flask routes and logic.
-- `static/`: Directory for static files like CSS, JS, and images.
-- `templates/`: Directory for HTML templates.
+### Files:
+- `InventoryApp.py`: Application file related to inventory management.
+- `SalesApp.py`: Application file related to sales management.
+- `CustomerApp.py`: Application file related to customer management.
+- `EmployeeApp.py`: Application file related to employee management.
+- `initializeSchema.sql`: SQL script to initialize the database schema.
+- `REQUIREMENTS.md`: File detailing the requirements for the project.
+- `LICENSE`: License file for the project.
+- `CONTRIBUTING.md`: Guidelines for contributing to the project.
+- `COMMERCIAL.md`: Information related to commercial aspects of the project.
+- `.gitignore`: File specifying which files and directories to ignore in Git.
 - `README.md`: Documentation for the project.
+
+### Folders:
+- `src/`: Javascript files for the webstie.
+- `static/`: Directory for static files like CSS.
+- `templates/`: Directory for HTML templates.
+- `testing/`: Unit and integration testing for the code.
 
 ## Contribution
 
