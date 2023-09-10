@@ -16,6 +16,11 @@ A comprehensive database management system designed to streamline operations for
 
 This project was initiated to modernize and enhance the operations of Anatta Flowers Shop. With a focus on improving customer experience, inventory management, and automating supply replenishment, this system has significantly boosted the shop's operational efficiency.
 
+## Requirements
+
+For more information about the technical requirements of running this project on your local computer, please refer to [here] (REQUIREMENTS.md).
+
+
 ## Installation and Setup
 
 1. Clone the repository:
@@ -58,6 +63,10 @@ Contributions are welcome! Please read the contribution guidelines before submit
 
 ## License
 This project is licensed under the MIT License. 
+
+## Commercial Use
+
+Commercial use of this project is allowed subject to certain specified circumstances, restrictions, and exceptions. see [here](COMMERCIAL.md) for more details.
 
 ## Acknowledgements
 
