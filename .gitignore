@@ -1,5 +1,2 @@
-# Ignore menus.py file
-menus.py
-
 # Ignore menus.py folder
-menus.py/
+menus/
