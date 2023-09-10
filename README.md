@@ -5,11 +5,13 @@ A comprehensive database management system designed to streamline operations for
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Requirements](#requirements)
 - [Installation and Setup](#installation-and-setup)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Contribution](#contribution)
 - [License](#license)
+- [Commercial Use](#commercial-use)
 - [Acknowledgements](#acknowledgements)
 
 ## Introduction
@@ -60,10 +62,8 @@ Contributions are welcome! Please read the contribution guidelines before submit
 
 [Contribution guidelines for this project](CONTRIBUTING.md)
 
-
 ## License
 This project is licensed under the MIT License. The full details of the license can be seen [here](LICENSE).
-
 
 ## Commercial Use
 
