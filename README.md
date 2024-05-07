@@ -1,91 +1,94 @@
-# Anatta Flowers Shop Database System
+# Project Documentation
 
-A comprehensive database management system designed to streamline operations for Anatta Flowers Shop in Oakville, Canada.
+## Overview
+This project is a RESTful API for a note-taking application developed using Node.js, Express, and MongoDB. The purpose of the project is to provide a backend service for managing and persisting notes with functionalities to create, retrieve, and delete notes. The frontend is built using React to ensure scalability, readability, and modularity of the frontend code. The notes are hosted and kept in a MongoDB database to ensure that the notes do not disappear after refreshing the page. Express.js and Node.js are used to frame the backend API and facilitate communication between the server and client. 
 
-## Table of Contents
+## Technologies used
 
-- [Introduction](#introduction)
-- [Requirements](#requirements)
-- [Installation and Setup](#installation-and-setup)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Contribution](#contribution)
-- [License](#license)
-- [Commercial Use](#commercial-use)
-- [Acknowledgements](#acknowledgements)
+### Frontend
 
-## Introduction
+The front end is created using Javascript (ES6), HTML, and CSS. React framework is used for its virtual DOM and performance optimization and its reusable components, which can enhance code reusability and codability. React also allows easy integration with other frontend and backend technologies to ensure the connection from the client to the server is stable. 
 
-This project was initiated to modernize and enhance the operations of Anatta Flowers Shop. With a focus on improving customer experience, inventory management, and automating supply replenishment, this system has significantly boosted the shop's operational efficiency.
+### Database
 
-## Requirements
+MongoDB is used as the database to store the notes. Storing notes in the backend is critical because it ensures that notes user entered will not be removed after refreshing or reopening the page. MongoDB is notable for its high speed and availability, its Atlas function which allows a simple and free setup and database connection, and its flexibility in terms of note structure. Compared to SQL, MongoDB allows for highly diverse and flexible data and allows building the webpage faster. 
 
-For more information about the technical requirements of running this project on your local computer, please refer to [here] (REQUIREMENTS.md).
+### Backend
+
+Express.js and Node.js are used for the backend development of this note-taking webpage. They are used to establish a server for MongoDB database connection and building API endpoints, which handle adding, retrieving, and deleting notes efficiently using RESTful API conventions and methodologies. The backend ensures that what user inputs and modifies gets transmitted to the database, and any changes in the database are accurately and promptly reflected back to the client. The backend serves as a crucial connection between the client and the server, ensuring their interactions and sent and reflected as expected. 
+
+## File Structure
+The project structure is organized as follows:
+- `/backend`: Contains the server-side code
+  - `/models`: Defines the data models (e.g., `Note` model)
+  - `/routes`: Handles different API routes for note operations
+- `/public`:
+- `/src`:
+
+The backend and frontend code are separated for best practices, and modifications in one shall in general not impact the other. 
+
+## Key Components
+### Models
+The `Note` model represents a note entity in the database with fields `title` and `content`.
+
+### Routes
+- `POST /`: Creates a new note
+- `GET /`: Retrieves all notes
+- `DELETE /:id`: Deletes a note by ID
 
 
-## Installation and Setup
+## API Endpoints
+### POST /
+- Creates a new note
+- Request Body:
 
-1. Clone the repository:
+{
+"title": "Note Title",
+"content": "Note Content"
+}
 
-```
-git clone https://github.com/crown-of-napoleon/Florist-Database.git
-```
+- Response (201 - Created):
 
-2. Navigate to the project directory and install the required dependencies:
-```
-pip install -r requirements.txt
-```
+{
+"_id": "note_id",
+"title": "Note Title",
+"content": "Note Content"
+}
 
-3. Run the Flask application:
-```
-flask run
-```
 
-## Features
+### GET /
+- Retrieves all notes
+- Response (200 - OK): Array of all notes
 
-- **Relational Database**: Built on MySQL, ensuring structured and efficient data storage.
-- **Web Interface**: User-friendly interface developed with Python and Flask.
-- **Dynamic Content**: AJAX calls integrated for real-time content updates, enhancing responsiveness.
-- **User Authentication**: Secure login system using Flask’s session object.
-- **Inventory Management**: Automated processes for tracking and replenishing stock.
+### DELETE /:id
+- Deletes a note by ID
+- Response (200 - OK): Deleted note object
 
-## Project Structure
+## Running the Project
+To run the project locally:
+1. Clone the repository from GitHub.
+2. Install dependencies using `npm install`.
+3. Ensure that the command is currently in the backend folder by  `cd backend/` if necessary.
+4. Start the server with `` or `node server.js`.
+5. The server will run on `http://localhost:3000`.
 
-### Files:
-- `InventoryApp.py`: Application file related to inventory management.
-- `SalesApp.py`: Application file related to sales management.
-- `CustomerApp.py`: Application file related to customer management.
-- `EmployeeApp.py`: Application file related to employee management.
-- `initializeSchema.sql`: SQL script to initialize the database schema.
-- `REQUIREMENTS.md`: File detailing the requirements for the project.
-- `LICENSE`: License file for the project.
-- `CONTRIBUTING.md`: Guidelines for contributing to the project.
-- `COMMERCIAL.md`: Information related to commercial aspects of the project.
-- `.gitignore`: File specifying which files and directories to ignore in Git.
-- `README.md`: Documentation for the project.
+## Dependencies
+The project uses the following dependencies:
+- Express: Web framework for Node.js
+- Mongoose: MongoDB object modeling tool
+- Body-parser: Parse incoming request bodies in a middleware
 
-### Folders:
-- `src/`: Javascript files for the webstie.
-- `static/`: Directory for static files like CSS.
-- `templates/`: Directory for HTML templates.
-- `testing/`: Unit and integration testing for the code.
 
-## Contribution
 
-Contributions are welcome! Please read the contribution guidelines before submitting pull requests.
+## Testing
+You can test the API endpoints using tools like Postman. The API endpoints documented above can all be tested:
 
-[Contribution guidelines for this project](CONTRIBUTING.md)
+- POST
+- GET
+- DELETE
+
+## Author
+Haolin Guo
 
 ## License
-This project is licensed under the MIT License. The full details of the license can be seen [here](LICENSE).
-
-## Commercial Use
-
-Commercial use of this project is allowed subject to certain specified circumstances, restrictions, and exceptions. see [here](COMMERCIAL.md) for more details.
-
-## Acknowledgements
-
-- Anatta Flowers Shop for their collaboration and feedback.
-- Oakville Trafalgar High School's Computer Science Department for their recognition and support.
-- All contributors and testers who helped in refining this system.
-
+This project is licensed under the MIT License - see the LICENSE.md file for details.

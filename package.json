@@ -1,0 +1,33 @@
+{
+  "name": "students-keeper-app-part-1-starting-forked",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-scripts": "3.2.0",
+    "vercel": "^34.1.8"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start-server": "cd backend/ && node server.js"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
