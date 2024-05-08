@@ -7,6 +7,8 @@ function Note(props) {
       <p>{props.content}</p>
       <p>Price: ${props.price}</p> {/* Display the price */}
       <p>Quantity: ${props.quantity}</p>
+      <button onClick={() => props.onDecrease(props.id)}>-</button>
+      <button onClick={() => props.onIncrease(props.id)}>+</button>
       <button onClick={() => props.onDelete(props.id)}>DELETE</button>
     </div>
   );

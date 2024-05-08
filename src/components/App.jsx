@@ -44,6 +44,33 @@ function App() {
       .catch((err) => console.error("Error removing note:", err));
   }
 
+  function modifyQuantity(id, delta) {
+    setNotesArray(prev => prev.map(note => {
+      if (note._id === id) {
+        const updatedQuantity = Math.max(0, note.quantity + delta);
+        updateQuantity(id, updatedQuantity);
+        return { ...note, quantity: updatedQuantity };
+      }
+      return note;
+    }));
+  }
+  
+  function updateQuantity(id, quantity) {
+    fetch(`http://localhost:5000/api/notes/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ quantity })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Quantity updated:', data);
+    })
+    .catch(err => {
+      console.error('Error updating quantity:', err);
+      alert('Failed to update quantity.');
+    });
+  }
+
   return (
     <div>
       <Header />
@@ -57,6 +84,8 @@ function App() {
           quantity={note.quantity}
           content={note.content}
           onDelete={() => removeNote(note._id)}
+          onIncrease={() => modifyQuantity(note._id, 1)}
+          onDecrease={() => modifyQuantity(note._id, -1)}
         />
       ))}
       <Footer />
