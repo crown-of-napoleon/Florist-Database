@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const { title, price, content } = req.body;
-    const note = new Note({ title, price, content });
+    const { title, price, quantity, content } = req.body;
+    const note = new Note({ title, price, quantity, content });
     await note.save();
     res.status(201).json(note);
   } catch (error) {

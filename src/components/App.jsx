@@ -54,6 +54,7 @@ function App() {
           id={note._id}
           title={note.title}
           price={note.price} // Pass the price to the Note component
+          quantity={note.quantity}
           content={note.content}
           onDelete={() => removeNote(note._id)}
         />

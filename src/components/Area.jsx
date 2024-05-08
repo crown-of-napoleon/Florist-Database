@@ -4,6 +4,7 @@ function Area(props) {
   const [note, setNote] = useState({
     title: "",
     price: "",
+    quantity: "",
     content: "",
   });
 
@@ -32,6 +33,7 @@ function Area(props) {
     setNote({
       title: "",
       price: "",
+      quantity: "",
       content: "",
     });
   }
@@ -51,6 +53,13 @@ function Area(props) {
           onChange={handleChange}
           value={note.price}
           placeholder="Price"
+        />
+          <input
+          name="quantity"
+          type="number"
+          onChange={handleChange}
+          value={note.quantity}
+          placeholder="Quantity"
         />
         <textarea
           name="content"
