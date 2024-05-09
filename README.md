@@ -72,7 +72,7 @@ The quantity item can be added or decreased by 1 by clicking the respective butt
 - Response (200 - OK): Deleted entry object
 
 ### PATCH /:id
-- Modify a note by ID
+- Modifies a note by ID
 - Response (200 - OK): Modified the quantity of the entry object
 
 ## Running the Project
