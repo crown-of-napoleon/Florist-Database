@@ -11,7 +11,7 @@ The front end is created using Javascript (ES6), HTML, and CSS. React framework 
 
 ### Database
 
-MongoDB is used as the database to store the notes. Storing notes in the backend is critical because it ensures that notes user entered will not be removed after refreshing or reopening the page. MongoDB is notable for its high speed and availability, its Atlas function which allows a simple and free setup and database connection, and its flexibility in terms of note structure. Compared to SQL, MongoDB allows for highly diverse and flexible data and allows building the webpage faster. 
+MongoDB is used as the database to store the notes. Storing itmes in the backend is critical because it ensures that what the user entered will not be removed after refreshing or reopening the page. MongoDB is notable for its high speed and availability, its Atlas function which allows a simple and free setup and database connection, and its flexibility in terms of note structure. Compared to SQL, MongoDB allows for highly diverse and flexible data and allows building the webpage faster. 
 
 ### Backend
 
