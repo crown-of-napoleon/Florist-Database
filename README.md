@@ -22,8 +22,8 @@ The project structure is organized as follows:
 - `/backend`: Contains the server-side code
   - `/models`: Defines the data models (e.g., `Note` model)
   - `/routes`: Handles different API routes for note operations
-- `/public`:
-- `/src`:
+- `/public`: Contains the .html and .css file that outlines the frontend structure of the florist management system.
+- `/src`: Contains .jsx files that outlines the webpage elements, including individual flower entries and an area to add new flowers to the florist management system.
 
 The backend and frontend code are separated for best practices, and modifications in one shall in general not impact the other. 
 
@@ -72,7 +72,8 @@ To run the project locally:
 2. Install dependencies using `npm install`.
 3. Ensure that the command is currently in the backend folder by  `cd backend/` if necessary.
 4. Start the server with `` or `node server.js`.
-5. The server will run on `http://localhost:3000`.
+5. On a separate shell command, run  `npm start`.
+6. The server will run on `http://localhost:3000`.
 
 ## Dependencies
 The project uses the following dependencies:
@@ -80,6 +81,7 @@ The project uses the following dependencies:
 - Mongoose: MongoDB object modeling tool
 - Body-parser: Parse incoming request bodies in a middleware
 
+The dependencies are listed in the `packages.json` file.
 
 
 ## Testing
