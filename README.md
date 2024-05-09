@@ -29,7 +29,9 @@ The backend and frontend code are separated for best practices, and modification
 
 ## Key Components
 ### Models
-The `Note` model represents a note entity in the database with fields `title` and `content`.
+The `Note` model represents a flower entity in the database with fields that document its title, description, price, and quantity.
+
+The quantity item can be added or decreased by 1 by clicking the respective button. It serves to modify the quantity available for a specific flower.
 
 ### Routes
 - `POST /`: Creates a new note
