@@ -34,18 +34,22 @@ The `Note` model represents a flower entity in the database with fields that doc
 The quantity item can be added or decreased by 1 by clicking the respective button. It serves to modify the quantity available for a specific flower.
 
 ### Routes
-- `POST /`: Creates a new note
-- `GET /`: Retrieves all notes
-- `DELETE /:id`: Deletes a note by ID
+- `POST /`: Creates a new flower item
+- `GET /`: Retrieves all flower items
+- `DELETE /:id`: Deletes an item by ID
+- `PATCH /:id`: Modify the quantity of a flower entry by ID
+
 
 
 ## API Endpoints
 ### POST /
-- Creates a new note
+- Creates a new entry
 - Request Body:
 
 {
-"title": "Note Title",
+"title": "Flower Title",
+"price": "FLower Price",
+"quantity": "Flower Quantity",
 "content": "Note Content"
 }
 
@@ -53,18 +57,23 @@ The quantity item can be added or decreased by 1 by clicking the respective butt
 
 {
 "_id": "note_id",
-"title": "Note Title",
+"title": "Flower Title",
+"price": "FLower Price",
+"quantity": "Flower Quantity",
 "content": "Note Content"
 }
 
-
 ### GET /
-- Retrieves all notes
-- Response (200 - OK): Array of all notes
+- Retrieves all entries
+- Response (200 - OK): Array of all entries
 
 ### DELETE /:id
-- Deletes a note by ID
-- Response (200 - OK): Deleted note object
+- Deletes an entry by ID
+- Response (200 - OK): Deleted entry object
+
+### PATCH /:id
+- Modify a note by ID
+- Response (200 - OK): Modified the quantity of the entry object
 
 ## Running the Project
 To run the project locally:
