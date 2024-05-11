@@ -1,8 +1,10 @@
+// Express.js for backend route
 const express = require("express");
 const Note = require("../models/model");
 
 const router = express.Router();
 
+// POST is used to save the current entry
 router.post("/", async (req, res) => {
   try {
     const { title, price, quantity, content } = req.body;
@@ -14,6 +16,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// GET is used to retrieve the entries in the database
 router.get("/", async (req, res) => {
   try {
     const notes = await Note.find({});
@@ -23,6 +26,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// DELETE is used to delete a specific entry
 router.delete("/:id", async (req, res) => {
   try {
     const note = await Note.findByIdAndDelete(req.params.id);
@@ -35,7 +39,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// Update a note
+// Update an entry, used to change the quantity
 router.patch("/:id", async (req, res) => {
   try {
     const { quantity } = req.body;
