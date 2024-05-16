@@ -80,9 +80,10 @@ To run the project locally:
 1. Clone the repository from GitHub.
 2. Install dependencies using `npm install`.
 3. Ensure that the command is currently in the backend folder by  `cd backend/` if necessary.
-4. Start the server with `` or `node server.js`.
-5. On a separate shell command, run  `npm start`.
-6. The server will run on `http://localhost:3000`.
+4. If you are using macOS, before starting the server, ensure that the AirPlay Receiver feature is disabled on your macOS to release port 5000.
+5. Start the server with `` or `node server.js`.
+6. On a separate shell command, run  `npm start`.
+7. The server will run on `http://localhost:3000`.
 
 ## Dependencies
 The project uses the following dependencies:
