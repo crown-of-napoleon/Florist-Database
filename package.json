@@ -1,7 +1,7 @@
 {
   "name": "students-keeper-app-part-1-starting-forked",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Overview This project is a RESTful API for a florist database management webpage developed using Node.js, Express, and MongoDB. The purpose of the project is to provide a backend service for managing and persisting florist inventories and sales with functionalities to create, retrieve, and delete the inventory. The frontend is built using React to ensure scalability, readability, and modularity of the frontend code. The notes are hosted and kept in a MongoDB database to ensure that the notes do not disappear after refreshing the page. Express.js and Node.js are used to frame the backend API and facilitate communication between the server and client.",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
@@ -29,5 +29,7 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "author": "",
+  "license": "ISC"
 }
