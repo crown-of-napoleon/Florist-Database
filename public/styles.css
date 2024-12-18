@@ -164,3 +164,22 @@ form button {
   cursor: pointer;
   outline: none;
 }
+
+.edit-button {
+  font-size: 6px; 
+  text-align: center;
+  padding: 6px 12px; 
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.edit-button:focus {
+  outline: none;
+}

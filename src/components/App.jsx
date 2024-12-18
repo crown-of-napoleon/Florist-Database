@@ -71,6 +71,31 @@ function App() {
     });
   }
 
+  function updateContent(id, content) {
+    fetch(`http://localhost:5001/api/notes/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update content");
+        }
+        return response.json();
+      })
+      .then((updatedNote) => {
+        setNotesArray((prevNotes) =>
+          prevNotes.map((note) =>
+            note._id === id ? { ...note, content: updatedNote.content } : note
+          )
+        );
+      })
+      .catch((err) => {
+        console.error("Error updating content description:", err);
+        alert("Failed to update content.");
+      });
+  }
+
   return (
     <div>
       <Header />
@@ -86,6 +111,7 @@ function App() {
           onDelete={() => removeNote(note._id)}
           onIncrease={() => modifyQuantity(note._id, 1)}
           onDecrease={() => modifyQuantity(note._id, -1)}
+          onUpdateContent={updateContent}
         />
       ))}
       <Footer />
