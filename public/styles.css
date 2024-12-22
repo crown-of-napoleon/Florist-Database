@@ -130,6 +130,10 @@ footer p {
   background-color: #d9534f; /* Red color for delete button */
 }
 
+.note-actions .delete-button:hover {
+  background-color: #0056b3; /* Red color for delete button */
+}
+
 form {
   position: relative;
   width: 480px;
