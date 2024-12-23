@@ -58,7 +58,7 @@ function Note(props) {
             className="edit-button"
             onClick={() => setIsEditing(true)}
           >
-            EDIT DESCRIPTION
+            EDIT
           </button>
         )}
       </div>
