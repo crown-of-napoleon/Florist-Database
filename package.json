@@ -9,10 +9,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "ioredis": "^5.4.2",
     "mongoose": "^8.3.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-scripts": "^5.0.1",
+    "redis": "^4.7.0",
     "vercel": "^34.1.8",
     "webpack": "^5.96.1"
   },
