@@ -56,17 +56,22 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// Update an entry, used to change the quantity
+// Update an entry, used to change the quantity, content, and price
 router.patch("/:id", async (req, res) => {
   try {
-    const { quantity, content } = req.body;
+    const { quantity, content, price } = req.body;
     const updates = {};
+    
     if (quantity !== undefined) {
       updates.quantity = quantity;
     }
     if (content !== undefined) {
       updates.content = content;
     }
+    if (price !== undefined) {
+      updates.price = price;
+    }
+    
     const note = await Note.findByIdAndUpdate(req.params.id, updates, { new: true });
     if (!note) {
       return res.status(404).json({ error: "Note not found" });

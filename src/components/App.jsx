@@ -54,45 +54,46 @@ function App() {
       return note;
     }));
   }
-  
+
   function updateQuantity(id, quantity) {
     fetch(`http://localhost:5001/api/notes/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ quantity })
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Quantity updated:', data);
-    })
-    .catch(err => {
-      console.error('Error updating quantity:', err);
-      alert('Failed to update quantity.');
-    });
+      .then(response => response.json())
+      .then(data => {
+        console.log('Quantity updated:', data);
+      })
+      .catch(err => {
+        console.error('Error updating quantity:', err);
+        alert('Failed to update quantity.');
+      });
   }
 
-  function updateContent(id, content) {
+  // New function to handle updating multiple fields (content and price)
+  function updateNote(id, updates) {
     fetch(`http://localhost:5001/api/notes/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content }),
+      body: JSON.stringify(updates),
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to update content");
+          throw new Error("Failed to update note");
         }
         return response.json();
       })
       .then((updatedNote) => {
         setNotesArray((prevNotes) =>
           prevNotes.map((note) =>
-            note._id === id ? { ...note, content: updatedNote.content } : note
+            note._id === id ? { ...note, ...updatedNote } : note
           )
         );
       })
       .catch((err) => {
-        console.error("Error updating content description:", err);
-        alert("Failed to update content.");
+        console.error("Error updating note:", err);
+        alert("Failed to update note.");
       });
   }
 
@@ -105,13 +106,13 @@ function App() {
           key={note._id}
           id={note._id}
           title={note.title}
-          price={note.price} // Pass the price to the Note component
+          price={note.price}
           quantity={note.quantity}
           content={note.content}
           onDelete={() => removeNote(note._id)}
           onIncrease={() => modifyQuantity(note._id, 1)}
           onDecrease={() => modifyQuantity(note._id, -1)}
-          onUpdateContent={updateContent}
+          onUpdate={updateNote}
         />
       ))}
       <Footer />
