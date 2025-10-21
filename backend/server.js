@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { connectQueue } = require("./rabbit"); // Add this import
+const { connectQueue } = require("./rabbit/rabbit.js"); // Add this import
 require("dotenv").config();
 
 const app = express();

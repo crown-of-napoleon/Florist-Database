@@ -1,7 +1,7 @@
 const express = require("express");
 const Note = require("../models/model");
 const redis = require("../redisClient");
-const { sendToQueue } = require("../rabbit"); // Import the producer function
+const { sendToQueue } = require("../rabbit/rabbit.js"); // Import the producer function
 const router = express.Router();
 
 // Cache middleware
