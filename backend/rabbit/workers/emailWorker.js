@@ -2,6 +2,11 @@
 const amqp = require("amqplib");
 const nodemailer = require("nodemailer");
 const queueName = "email_updates";
+const path = require("path");
+// Find the .env file in the root directory (up two levels from workers)
+require("dotenv").config({
+    path: path.resolve(__dirname, '../../.env') 
+});
 
 async function startWorker() {
   const connection = await amqp.connect("amqp://localhost");
@@ -10,7 +15,7 @@ async function startWorker() {
   
   console.log("✅ Email worker connected to RabbitMQ");
 
-  const transporter = nodemailer.createTransporter({
+  const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.EMAIL_USER,
@@ -45,7 +50,7 @@ async function startWorker() {
 
       const mailOptions = {
         from: `"Florist Database" <${process.env.EMAIL_USER}>`,
-        to: "youremail@example.com",
+        to: process.env.NOTIFY_TO,
         subject: subject,
         text: text,
       };
@@ -55,7 +60,7 @@ async function startWorker() {
       channel.ack(msg);
     } catch (err) {
       console.error("❌ Failed to send email:", err);
-      channel.nack(msg, false, true);
+      channel.nack(msg, false, false);
     }
   });
 }
