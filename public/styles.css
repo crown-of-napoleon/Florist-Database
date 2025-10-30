@@ -6,10 +6,24 @@
 html {
   font-family: "Montserrat", sans-serif;
 }
+html, body, #root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
-  background: linear-gradient(135deg, #FFD1DC, #FFDEE9, #FFF5BA, #D5F4E6);
-  background-size: 300% 300%;
-  animation: gradientAnimation 12s ease infinite;
+  min-height: 100vh;
+}
+
+div.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-container {
+  flex: 1;
 }
 
 @keyframes gradientAnimation {
@@ -34,7 +48,7 @@ header h1 {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   text-align: center;
   bottom: 0;
   width: 100%;
@@ -45,6 +59,7 @@ footer {
   align-items: center;
   justify-content: center;
   border-radius: 12px 12px 0 0;
+  margin-top: 40px;
 }
 
 footer p {

@@ -98,26 +98,29 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app-container">
       <Header />
       <Area onAdd={addNote} />
-      {notesArray.map((note) => (
-        <Note
-          key={note._id}
-          id={note._id}
-          title={note.title}
-          price={note.price}
-          quantity={note.quantity}
-          content={note.content}
-          onDelete={() => removeNote(note._id)}
-          onIncrease={() => modifyQuantity(note._id, 1)}
-          onDecrease={() => modifyQuantity(note._id, -1)}
-          onUpdate={updateNote}
-        />
-      ))}
+      <div className="notes-container">
+        {notesArray.map((note) => (
+          <Note
+            key={note._id}
+            id={note._id}
+            title={note.title}
+            price={note.price}
+            quantity={note.quantity}
+            content={note.content}
+            onDelete={() => removeNote(note._id)}
+            onIncrease={() => modifyQuantity(note._id, 1)}
+            onDecrease={() => modifyQuantity(note._id, -1)}
+            onUpdate={updateNote}
+          />
+        ))}
+      </div>
       <Footer />
     </div>
   );
 }
+
 
 export default App;
