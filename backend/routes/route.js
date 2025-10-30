@@ -2,6 +2,7 @@ const express = require("express");
 const Note = require("../models/model");
 const redis = require("../redisClient");
 const { sendToQueue } = require("../rabbit/rabbit.js"); // Import the producer function
+const { getGeminiEmbedding } = require("../embedding.js"); // ✅ import Gemini helper
 const router = express.Router();
 
 // Cache middleware
@@ -22,7 +23,10 @@ const cacheMiddleware = async (req, res, next) => {
 router.post("/", async (req, res) => {
   try {
     const { title, price, quantity, content } = req.body;
-    const note = new Note({ title, price, quantity, content });
+    if (!title) return res.status(400).json({ error: "Title is required" });
+    const textToEmbed = `${title} ${content || ""}`.trim();
+    const embedding = await getGeminiEmbedding(textToEmbed);
+    const note = new Note({ title, price, quantity, content, embedding});
     await note.save();
     await redis.del('notes'); // Invalidate cache
     
@@ -78,12 +82,17 @@ router.delete("/:id", async (req, res) => {
 // PATCH - Update entry and send notification
 router.patch("/:id", async (req, res) => {
   try {
-    const { quantity, content, price } = req.body;
+    const { title, quantity, content, price } = req.body;
     const updates = {};
     
     if (quantity !== undefined) updates.quantity = quantity;
     if (content !== undefined) updates.content = content;
     if (price !== undefined) updates.price = price;
+
+    if (title !== undefined || content !== undefined) {
+      const textToEmbed = `${title || ""} ${content || ""}`.trim();
+      updates.embedding = await getGeminiEmbedding(textToEmbed);
+    }
     
     const note = await Note.findByIdAndUpdate(req.params.id, updates, { new: true });
     

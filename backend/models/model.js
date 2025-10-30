@@ -11,6 +11,12 @@ const NoteSchema = new mongoose.Schema({
   price: { type: Number, required: true},
   quantity: {type: Number, required: true},
   content: { type: String, required: false },
+  embedding: {
+    type: [Number],
+    index: "vector", // Marks this as a vector index field
+    dimensions: 768, // Gemini text-embedding-004 outputs 768-dimensional vectors
+    similarity: "cosine", // Use cosine similarity for vector search
+  },
 });
 
 // Create this model according to to schema defined above
